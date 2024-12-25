@@ -1,9 +1,20 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Button,
+  Linking,
+} from "react-native";
 import { Image } from "react-native";
 import { FontAwesome6 } from "@expo/vector-icons";
 
 export default function App() {
+  const getInTouch = () => {
+    Linking.openURL("mailto:nahid151341@gmail.com");
+  };
+
   return (
     <View style={styles.container}>
       <Image
@@ -50,6 +61,10 @@ export default function App() {
           style={{ marginHorizontal: 10 }}
         />
       </View>
+
+      <Button title="Get In Touch" onPress={getInTouch} />
+
+      {/* <Button title="Click Me" onPress={() => alert("Hello World")} /> */}
 
       <ScrollView>
         <Text style={{ fontSize: 20, margin: 10 }}>
