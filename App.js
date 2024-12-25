@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import { Image } from "react-native";
 import { FontAwesome6 } from "@expo/vector-icons";
 
@@ -50,6 +50,23 @@ export default function App() {
           style={{ marginHorizontal: 10 }}
         />
       </View>
+
+      <ScrollView>
+        <Text style={{ fontSize: 20, margin: 10 }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          scelerisque, nunc in ultricies luctus, nulla eros tincidunt orci, ac
+          tincidunt erat ex eu purus. Sed sed nisl nec nisl fermentum
+          sollicitudin. Integer auctor, mi sit amet ultricies interdum, nunc
+          justo tincidunt erat, vel porttitor dui felis a dui. Fusce nec
+          scelerisque odio. Nullam vel purus auctor, tincidunt risus vel,
+          scelerisque mi. Nullam nec metus nec eros ultrices ultricies. Aliquam
+          erat volutpat. Sed nec ante ut justo ultricies tincidunt. Nullam
+          pharetra, dui sit amet malesuada sagittis, ante felis congue justo,
+          nec ultr ices nunc nisl nec nisl. Nullam nec metus nec eros ultrices
+          ultricies. Aliquam erat volutpat. Sed nec ante ut justo ultricies
+          tincidunt. Nullam pharetra dui sit amet malesuada sagittis, ante felis
+        </Text>
+      </ScrollView>
 
       <StatusBar style="auto" />
     </View>
