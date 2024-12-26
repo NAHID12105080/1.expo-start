@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons"; // Correct FontAwesome import
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import Projects from "./Projects.jsx";
 
 export default function App() {
   const getInTouch = () => {
@@ -64,10 +65,26 @@ export default function App() {
               ac tincidunt erat ex eu purus. Sed sed nisl nec nisl fermentum
               sollicitudin. Integer auctor, mi sit amet ultricies interdum, nunc
               justo tincidunt erat, vel porttitor dui felis a dui. Fusce nec
-              scelerisque odio. Nullam vel purus auctor, tincidunt risus vel,
-              scelerisque mi. Nullam nec metus nec eros ultrices ultricies.
-              Aliquam erat volutpat. Sed nec ante ut justo ultricies tincidunt.
+              scelerisque odio.
             </Text>
+          </ScrollView>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.projectcards}
+          >
+            <Projects
+              imageSource={require("./assets/nlp1.png")}
+              projectName="NLP"
+            />
+            <Projects
+              imageSource={require("./assets/nlp2.png")}
+              projectName="NLP"
+            />
+            <Projects
+              imageSource={require("./assets/nlp3.png")}
+              projectName="NLP"
+            />
           </ScrollView>
           <StatusBar style="auto" />
         </View>
@@ -123,5 +140,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: "justify",
     color: "black",
+  },
+  projectcards: {
+    flexDirection: "row",
+    gap: 10,
+    padding: 10,
   },
 });
