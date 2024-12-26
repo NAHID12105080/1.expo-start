@@ -73,6 +73,7 @@ export default function App() {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.projectcards}
           >
+            <Text style={{ fontSize: 20, fontWeight: "bold" }}>Projects</Text>
             <Projects
               imageSource={require("./assets/nlp1.png")}
               projectName="NLP"
