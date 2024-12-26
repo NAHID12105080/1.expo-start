@@ -20,7 +20,7 @@
 
 The following is the screenshot of the final output of the app:
 
-<img src="1.expo-start/assets/outcome.jpg" alt="Final Outcome" width="400" />
+<img src="./assets/outcome.jpg" alt="Final Outcome" width="400" />
 
 ---
 
