@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -6,10 +7,10 @@ import {
   ScrollView,
   Button,
   Linking,
-  SafeAreaView,
+  Image,
 } from "react-native";
-import { Image } from "react-native";
-import { FontAwesome6 } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons"; // Correct FontAwesome import
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
   const getInTouch = () => {
@@ -17,98 +18,110 @@ export default function App() {
   };
 
   return (
-    <SafeAreaView style={{ backgroundColor: "black" }}>
-      <View
-        style={{
-          backgroundColor: "green",
-          height: "100%",
-          alignItems: "center",
-        }}
-      >
-        <Text style={{ color: "black", fontSize: 20 }}>Hello World</Text>
-      </View>
-    </SafeAreaView>
-
-    // <View style={styles.container}>
-    //   <Image
-    //     source={require("./assets/nlp1.png")}
-    //     style={{ width: "100%", height: 200 }}
-    //   />
-
-    //   <Image
-    //     source={require("./assets/nahid.png")}
-    //     style={{
-    //       width: 100,
-    //       height: 100,
-    //       borderRadius: 50,
-    //       marginTop: -50,
-    //       borderWidth: 2,
-    //       borderColor: "yellow",
-    //       shadowColor: "black",
-    //       shadowOffset: { width: 0, height: 2 },
-    //       shadowOpacity: 0.5,
-    //       shadowRadius: 2,
-    //       elevation: 5,
-    //     }}
-    //   />
-
-    //   <Text style={{ fontSize: 10, fontWeight: "bold" }}>
-    //     Md Nahid Hassan
-    //   </Text>
-
-    //   <View style={{ flexDirection: "row", marginTop: 20 }}>
-    //     <FontAwesome6
-    //       name="github"
-    //       size={24}
-    //       color="black"
-    //       style={{ marginHorizontal: 10 }}
-    //     />
-    //     <FontAwesome6
-    //       name="linkedin"
-    //       size={24}
-    //       color="black"
-    //       style={{ marginHorizontal: 10 }}
-    //     />
-    //     <FontAwesome6
-    //       name="twitter"
-    //       size={24}
-    //       color="black"
-    //       style={{ marginHorizontal: 10 }}
-    //     />
-    //   </View>
-
-    //   <Button title="Get In Touch" onPress={getInTouch} />
-
-    //   {/* <Button title="Click Me" onPress={() => alert("Hello World")} /> */}
-
-    //   <ScrollView>
-    //     <Text style={{ fontSize: 20, margin: 10 }}>
-    //       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-    //       scelerisque, nunc in ultricies luctus, nulla eros tincidunt orci, ac
-    //       tincidunt erat ex eu purus. Sed sed nisl nec nisl fermentum
-    //       sollicitudin. Integer auctor, mi sit amet ultricies interdum, nunc
-    //       justo tincidunt erat, vel porttitor dui felis a dui. Fusce nec
-    //       scelerisque odio. Nullam vel purus auctor, tincidunt risus vel,
-    //       scelerisque mi. Nullam nec metus nec eros ultrices ultricies.
-    //       Aliquam erat volutpat. Sed nec ante ut justo ultricies tincidunt.
-    //       Nullam pharetra, dui sit amet malesuada sagittis, ante felis congue
-    //       justo, nec ultr ices nunc nisl nec nisl. Nullam nec metus nec eros
-    //       ultrices ultricies. Aliquam erat volutpat. Sed nec ante ut justo
-    //       ultricies tincidunt. Nullam pharetra dui sit amet malesuada
-    //       sagittis, ante felis
-    //     </Text>
-    //   </ScrollView>
-
-    //   <StatusBar style="auto" />
-    // </View>
+    <SafeAreaProvider>
+      <SafeAreaView edges={["bottom"]} style={styles.safeArea}>
+        <View style={styles.container}>
+          {/* Cover Image */}
+          <Image
+            source={require("./assets/nlp1.png")}
+            style={styles.coverImage}
+          />
+          {/* Profile Image */}
+          <Image
+            source={require("./assets/nahid.png")}
+            style={styles.profileImage}
+          />
+          {/* Name */}
+          <Text style={styles.nameText}>Md Nahid Hassan</Text>
+          {/* Social Icons */}
+          <View style={styles.socialIcons}>
+            <FontAwesome
+              name="github"
+              size={24}
+              color="black"
+              style={styles.icon}
+            />
+            <FontAwesome
+              name="linkedin"
+              size={24}
+              color="black"
+              style={styles.icon}
+            />
+            <FontAwesome
+              name="twitter"
+              size={24}
+              color="black"
+              style={styles.icon}
+            />
+          </View>
+          {/* Get In Touch Button */}
+          <Button title="Get In Touch" onPress={getInTouch} />
+          {/* Scrollable Text */}
+          <ScrollView contentContainerStyle={styles.scrollView}>
+            <Text style={styles.scrollText}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              scelerisque, nunc in ultricies luctus, nulla eros tincidunt orci,
+              ac tincidunt erat ex eu purus. Sed sed nisl nec nisl fermentum
+              sollicitudin. Integer auctor, mi sit amet ultricies interdum, nunc
+              justo tincidunt erat, vel porttitor dui felis a dui. Fusce nec
+              scelerisque odio. Nullam vel purus auctor, tincidunt risus vel,
+              scelerisque mi. Nullam nec metus nec eros ultrices ultricies.
+              Aliquam erat volutpat. Sed nec ante ut justo ultricies tincidunt.
+            </Text>
+          </ScrollView>
+          <StatusBar style="auto" />
+        </View>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+  container: {
+    flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+  },
+  coverImage: {
+    width: "100%",
+    height: 200,
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginTop: -50,
+    borderWidth: 2,
+    borderColor: "yellow",
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 5,
+  },
+  nameText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginTop: 10,
+    color: "black",
+  },
+  socialIcons: {
+    flexDirection: "row",
+    marginTop: 20,
+  },
+  icon: {
+    marginHorizontal: 10,
+  },
+  scrollView: {
+    paddingHorizontal: 10,
+    paddingVertical: 20,
+  },
+  scrollText: {
+    fontSize: 16,
+    textAlign: "justify",
+    color: "black",
   },
 });
